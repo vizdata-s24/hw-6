@@ -1,0 +1,39 @@
+on: push
+name: Check Assignment
+jobs:
+  check-allowed-files:
+    runs-on: self-hosted
+    container:
+      image: ghcr.io/dukestatsci/r_gh_actions:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check Files
+      run: |
+        checklist::quit_on_failure({
+          checklist::check_allowed_files(c("hw-6.qmd","hw-6.html", "hw-6.Rproj", "README.md", "data/*", "images/*", "*.ttf", "*.gif"))
+        })
+      shell: Rscript {0}
+
+  check-renders:
+    runs-on: self-hosted
+    container:
+      image: ghcr.io/dukestatsci/r_gh_actions:latest
+    steps:
+    - name: Remove old artifacts
+      uses: c-hive/gha-remove-artifacts@v1
+      with:
+        age: '0 seconds' # parsed by Moment.js
+        skip-tags: false
+        skip-recent: 0
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check Renders
+      run: |
+        checklist::check_qmd_renders("hw-6.qmd", install_missing = TRUE)
+      shell: Rscript {0}
+    - name: Create artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: hw-6-html
+        path: hw-6.html  

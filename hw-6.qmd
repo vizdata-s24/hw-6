@@ -1,0 +1,37 @@
+---
+title: "STA 313 - Spring 2024 - HW 6"
+subtitle: "Animate, tabulate, generate"
+author: "INSERT YOUR NAME HERE"
+format:
+  html:
+    embed-resources: true
+toc: true
+---
+
+```{r}
+#| label: load-packages
+#| message: false
+
+library(tidyverse)
+# add other packages as needed or remove comment
+```
+
+## 1 - Country populations
+
+Add parts, narrative, and/or code chunks as needed.
+
+## 2 - Adopt, don’t shop
+
+Add parts, narrative, and/or code chunks as needed.
+
+## 3 - Key lyme pie
+
+Add parts, narrative, and/or code chunks as needed.
+
+## 4 - Revisit and tabulate
+
+Add parts, narrative, and/or code chunks as needed.
+
+## 5 - Generate
+
+Add parts, narrative, and/or code chunks as needed.
